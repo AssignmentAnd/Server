@@ -8,20 +8,20 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + file.originalname);
     }
 })
-// const fileFilter = function (req, file, cb) {
-//     if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png')
-//     // (file.mimetype == 'application/pdf') for pdf files
-//     {
-//         cb(null, true)
+const fileFilter = function (req, file, cb) {
+    if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png')
+    // (file.mimetype == 'application/pdf') for pdf files
+    {
+        cb(null, true)
 
-//     }
-//     else {
-//         cb(null, false)
-//     }
+    }
+    else {
+        cb(null, false)
+    }
 
-// }
-// const upload = multer({
-//     storage: storage,
-//     fileFilter: fileFilter
-// });
+}
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
+});
 module.exports = upload;
