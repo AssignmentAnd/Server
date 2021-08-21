@@ -1,13 +1,13 @@
-// const multer = require('multer'); //install
+const multer = require('multer'); //install
 
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         cb(null, './pictures/Images')
-//     },
-//     filename: function (req, file, cb) {
-//         cb(null, Date.now() + file.originalname);
-//     }
-// })
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './pictures/Images')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + file.originalname);
+    }
+})
 // const fileFilter = function (req, file, cb) {
 //     if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png')
 //     // (file.mimetype == 'application/pdf') for pdf files
@@ -24,4 +24,4 @@
 //     storage: storage,
 //     fileFilter: fileFilter
 // });
-// module.exports = upload;
+module.exports = upload;
