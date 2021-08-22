@@ -1,87 +1,87 @@
-// const express = require('express');
-// const { check, validationResult } = require('express-validator');
-// const bcryptjs = require('bcryptjs');
-// const User = require('../models/register_model');
-// const jwt = require('jsonwebtoken');
-// const router = express.Router();
-// const auth = require('../Middleware/Authenticate')
-// // const upload = require('../Middleware/Upload');
+const express = require('express');
+const { check, validationResult } = require('express-validator');
+const bcryptjs = require('bcryptjs');
+const User = require('../models/register_model');
+const jwt = require('jsonwebtoken');
+const router = express.Router();
+const auth = require('../Middleware/Authenticate')
+// const upload = require('../Middleware/Upload');
 
-// router.post('/user/post', function (req, res) {
-//     console.log(req.body)
-//     const errors = validationResult(req);
+router.post('/user/post', function (req, res) {
+    console.log(req.body)
+    const errors = validationResult(req);
 
-//     if (errors.isEmpty) {
-//         //valid
-//         const FullName = req.body.FullName;
-//         const Address = req.body.Address;
-//         const PhoneNo = req.body.PhoneNo;
-//         const Username = req.body.Username;
-//         const Password = req.body.Password;
-//         // console.log(us);
-//         // console.log(add); 
-//         bcryptjs.hash(Password, 10, function (err, hash) {
-//             const data = new User({
-//                 FullName: FullName,
-//                 Address: Address,
-//                 PhoneNo: PhoneNo,
-//                 Username: Username,
+    if (errors.isEmpty) {
+        //valid
+        const FullName = req.body.FullName;
+        const Address = req.body.Address;
+        const PhoneNo = req.body.PhoneNo;
+        const Username = req.body.Username;
+        const Password = req.body.Password;
+        // console.log(us);
+        // console.log(add); 
+        bcryptjs.hash(Password, 10, function (err, hash) {
+            const data = new User({
+                FullName: FullName,
+                Address: Address,
+                PhoneNo: PhoneNo,
+                Username: Username,
             
-//                 Password: hash
-//             });
+                Password: hash
+            });
 
-//             data.save()
+            data.save()
             
-//             .then(function (result) {
+            .then(function (result) {
                 
-//                 console.log(data)
-//                 return res.status(201).json({ success:true,message: "Registration success !!!!" })
-//             })// sucessess vayo ki vaena
-//             .catch(function (err45) {
-//                 console.log(err45)
-//                 res.status(500).json({ error: err45 })
-//             })// error aayo ki aayena
-//         })
+                console.log(data)
+                return res.status(201).json({ success:true,message: "Registration success !!!!" })
+            })// sucessess vayo ki vaena
+            .catch(function (err45) {
+                console.log(err45)
+                res.status(500).json({ error: err45 })
+            })// error aayo ki aayena
+        })
 
-//     }
-//     else {  
-//         //invalid
-//         res.status(400).json(errors.array());
-//     }
-// })
+    }
+    else {  
+        //invalid
+        res.status(400).json(errors.array());
+    }
+})
 
-// //Login System .........................
-// router.post('/user/login', function (req, res) {
-//     const username = req.body.Username;
-//     const password = req.body.Password;
-//     console.log(username, password)
-//     User.findOne({ Username: username })
-//         .then(function (userData1) {
-//             //if username doesnot exist
-//             if (userData1 === null) {
-//                 return res.status(401).json({ error: "Invalid Credentials !! " })
-//             }
-//             // if username exists
-//             bcryptjs.compare(password, userData1.Password, function (err, result) {
-//                 if (result === false) {
-//                     //password worng
-//                     return res.status(401).json({ error: "Invalid Credentials !!" })
-//                 }
-//                 //then generate token - ticket
-//                 const token = jwt.sign({ UserId: userData1._id }, 'anysecrectkey')
-//                 console.log("Login vayo")
-//                 // res.send(token)
-//                 return res.status(200).json({
-//                     success:true, 
-//                     token:token
-//                 })
-//             })
-//         })
-//         .catch(function (e) {
-//             console.log(e)
-//             res.status(500).json({ message: e })
-//         })
-// })
+//Login System .........................
+router.post('/user/login', function (req, res) {
+    const username = req.body.Username;
+    const password = req.body.Password;
+    console.log(username, password)
+    User.findOne({ Username: username })
+        .then(function (userData1) {
+            //if username doesnot exist
+            if (userData1 === null) {
+                return res.status(401).json({ error: "Invalid Credentials !! " })
+            }
+            // if username exists
+            bcryptjs.compare(password, userData1.Password, function (err, result) {
+                if (result === false) {
+                    //password worng
+                    return res.status(401).json({ error: "Invalid Credentials !!" })
+                }
+                //then generate token - ticket
+                const token = jwt.sign({ UserId: userData1._id }, 'anysecrectkey')
+                console.log("Login vayo")
+                // res.send(token)
+                return res.status(200).json({
+                    success:true, 
+                    token:token
+                })
+            })
+        })
+        .catch(function (e) {
+            console.log(e)
+            res.status(500).json({ message: e })
+        })
+})
 
 
 // router.get('/register_show', auth.verifyUser, function (req, res) {
@@ -122,4 +122,4 @@
 //         console.log(err)
 //     })
 // })
-// module.exports = router;
+module.exports = router;
