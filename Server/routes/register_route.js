@@ -84,42 +84,42 @@ router.post('/user/login', function (req, res) {
 })
 
 
-// router.get('/register_show', auth.verifyUser, function (req, res) {
-//     // console.log("this is for showing data")
-//     // res.send("test show")
-//     User.findOne({_id : req.user._id}).then(function (data) {
-//         // console.log(data);
-//         res.send({
-//             success : true,
-//             user :data
-//         });
-//     })
-// })
+router.get('/register_show', auth.verifyUser, function (req, res) {
+    // console.log("this is for showing data")
+    // res.send("test show")
+    User.findOne({_id : req.user._id}).then(function (data) {
+        // console.log(data);
+        res.send({
+            success : true,
+            user :data
+        });
+    })
+})
 
 
-// router.delete('/artist/delete/:id', function(req,res){
-//     //delete code
-//     const id = req.params.id;
-//     User.deleteOne({_id : id})
-//     .then((result)=>{
-//         res.status(200).json({message : "deleted !!"})
-//     })
-//     .catch((e)=>{
-//         res.status(500).json({error : e})
-//     })
+router.delete('/artist/delete/:id', function(req,res){
+    //delete code
+    const id = req.params.id;
+    User.deleteOne({_id : id})
+    .then((result)=>{
+        res.status(200).json({message : "deleted !!"})
+    })
+    .catch((e)=>{
+        res.status(500).json({error : e})
+    })
     
-//     })
+    })
     
-// // for update
-// router.put('/register/update', function(req,res){
-//     console.log(req.body)
-//     const id = req.body.id;
-//     const FullName = req.body.FullName;
-//     User.updateOne({_id : id},{FullName : FullName,Address : Address, PhoneNo:PhoneNo,Username:Username,Password:Password}).then(function(){
-//         res.status(200).json({message : true})
-//     })
-//     .catch(function(err){
-//         console.log(err)
-//     })
-// })
+// for update
+router.put('/register/update', function(req,res){
+    console.log(req.body)
+    const id = req.body.id;
+    const FullName = req.body.FullName;
+    User.updateOne({_id : id},{FullName : FullName,Address : Address, PhoneNo:PhoneNo,Username:Username,Password:Password}).then(function(){
+        res.status(200).json({message : true})
+    })
+    .catch(function(err){
+        console.log(err)
+    })
+})
 module.exports = router;
