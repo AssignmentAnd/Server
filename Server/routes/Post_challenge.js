@@ -80,18 +80,18 @@ router.delete('/p_challenge/delete/:id', function (req, res) {
 
 })
 
-// // for update
-// router.put('/p_challenge/update', function (req, res) {
-//     console.log(req.body)
-//     const id = req.body.id;
-//     const FullName = req.body.FullName;
-//     const Profession = req.body.Profession;
-//     const PriceRate = req.body.PriceRate;
-//     PostChallenge.updateOne({ _id: id }, { FullName: FullName, Profession: Profession, PriceRate: PriceRate }).then(function () {
-//         res.status(200).json({ message: true })
-//     })
-//         .catch(function (err) {
-//             console.log(err)
-//         })
-// })
-// module.exports = router;
+// for update
+router.put('/p_challenge/update', function (req, res) {
+    console.log(req.body)
+    const id = req.body.id;
+    const FullName = req.body.FullName;
+    const Profession = req.body.Profession;
+    const PriceRate = req.body.PriceRate;
+    PostChallenge.updateOne({ _id: id }, { FullName: FullName, Profession: Profession, PriceRate: PriceRate }).then(function () {
+        res.status(200).json({ message: true })
+    })
+        .catch(function (err) {
+            console.log(err)
+        })
+})
+module.exports = router;
