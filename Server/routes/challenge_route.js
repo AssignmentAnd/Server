@@ -36,22 +36,31 @@ router.post('/challenge/insert', function (req, res) {
                 res.status(500).json({ error: err45 })
             })// error aayo ki aayena
         })
+        
+router.get('/challenge/show', function (req, res) {
+    // console.log("this is for showing data")
+    // res.send("test show")
+    Challenges.find().then(function (data) {
+        // console.log(data);
+        res.send(data);
+    })
+})
 
-// // for delete
-// router.delete('/challenge_delete/:id', auth.verifyUser, function (req, res) {
-//     //delete code
-//     const id = req.params.id;
-//     Challenges.deleteOne({ _id: id }).then(function () {
-//         res.send("Deleted !")
-//     })
+// for delete
+router.delete('/challenge_delete/:id', auth.verifyUser, function (req, res) {
+    //delete code
+    const id = req.params.id;
+    Challenges.deleteOne({ _id: id }).then(function () {
+        res.send("Deleted !")
+    })
 
-// })
-// // for update
-// router.put('/challenge_update/:id', function (req, res) {
-//     const id = req.params.id;
-//     const book_name = req.body.book_name;
-//     Challenges.updateOne({ _id: id }, { Email: Email }).then(function () {
-//         res.send("Updated!")
-//     })
-// })
-// module.exports = router;
+})
+// for update
+router.put('/challenge_update/:id', function (req, res) {
+    const id = req.params.id;
+    const book_name = req.body.book_name;
+    Challenges.updateOne({ _id: id }, { Email: Email }).then(function () {
+        res.send("Updated!")
+    })
+})
+module.exports = router;
