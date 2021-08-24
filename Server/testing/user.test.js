@@ -1,7 +1,6 @@
 // use the path of your model
 const foruser = require('../models/register_model');
 
-// const worker = require('../models/worker_model')
 const mongoose = require('mongoose');
 // use the new name of the database
 const url = 'mongodb://127.0.0.1:27017/PlayME';
