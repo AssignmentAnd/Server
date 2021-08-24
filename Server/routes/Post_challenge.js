@@ -66,19 +66,19 @@ router.get('/p_challenge/single/:id', function (req, res) {
 })
 
 
-// // for delete
-// router.delete('/p_challenge/delete/:id', function (req, res) {
-//     //delete code
-//     const id = req.params.id;
-//     PostChallenge.deleteOne({ _id: id })
-//         .then((result) => {
-//             res.status(200).json({ message: "deleted !!" })
-//         })
-//         .catch((e) => {
-//             res.status(500).json({ error: e })
-//         })
+// for delete
+router.delete('/p_challenge/delete/:id', function (req, res) {
+    //delete code
+    const id = req.params.id;
+    PostChallenge.deleteOne({ _id: id })
+        .then((result) => {
+            res.status(200).json({ message: "deleted !!" })
+        })
+        .catch((e) => {
+            res.status(500).json({ error: e })
+        })
 
-// })
+})
 
 // // for update
 // router.put('/p_challenge/update', function (req, res) {
