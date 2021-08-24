@@ -1,47 +1,47 @@
-// const express = require('express');
-// const PostChallenge = require('../models/post_challenge');
-// const router = express.Router();
-// const { check, validationResult } = require('express-validator');
-// const Authenticate = require('../Middleware/Authenticate');
-// const upload = require('../Middleware/Upload');
+const express = require('express');
+const PostChallenge = require('../models/post_challenge');
+const router = express.Router();
+const { check, validationResult } = require('express-validator');
+const Authenticate = require('../Middleware/Authenticate');
+const upload = require('../Middleware/Upload');
 
 
-// router.post('/p_challenge/post',function (req, res) {
-//     console.log(req.body)
-//     const errors = validationResult(req);
+router.post('/p_challenge/post',function (req, res) {
+    console.log(req.body)
+    const errors = validationResult(req);
 
-//     if (errors.isEmpty) {
+    if (errors.isEmpty) {
 
-//         const Username = req.body.Username;
-//         const Challengetitle = req.body.Challengetitle;
-//         const Game = req.body.Game;
-//         const Discordid = req.body.Discordid;
-//         const Description = req.body.Description;
-//         const Challengerate = req.body.Challengerate;
-//         const Livelink = req.body.Livelink;
-//         const pdata = new PostChallenge({
-//             Username: Username,
-//             Challengetitle: Challengetitle,
-//             Game: Game,
-//             Discordid: Discordid,
-//             Description: Description,
-//             Challengerate: Challengerate,
-//             Livelink: Livelink
-//         })
-//         pdata.save()
-//             .then(function (res) {
-//                 res.status(201).json({ messge: "Successfully added!!" })
-//             })
-//             .catch(function (eeeeee) {
-//                 res.status(500).json({ message: eeeeee })
-//             })
-//     }
-//     else {
-//         //invalid
-//         res.status(400).json(errors.array());
-//     }
+        const Username = req.body.Username;
+        const Challengetitle = req.body.Challengetitle;
+        const Game = req.body.Game;
+        const Discordid = req.body.Discordid;
+        const Description = req.body.Description;
+        const Challengerate = req.body.Challengerate;
+        const Livelink = req.body.Livelink;
+        const pdata = new PostChallenge({
+            Username: Username,
+            Challengetitle: Challengetitle,
+            Game: Game,
+            Discordid: Discordid,
+            Description: Description,
+            Challengerate: Challengerate,
+            Livelink: Livelink
+        })
+        pdata.save()
+            .then(function (res) {
+                res.status(201).json({ messge: "Successfully added!!" })
+            })
+            .catch(function (eeeeee) {
+                res.status(500).json({ message: eeeeee })
+            })
+    }
+    else {
+        //invalid
+        res.status(400).json(errors.array());
+    }
 
-// })
+})
 
 // router.get('/p_challenge/show', function (req, res) {
 //     // console.log("this is for showing data")
