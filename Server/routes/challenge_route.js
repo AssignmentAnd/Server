@@ -36,15 +36,6 @@ router.post('/challenge/insert', function (req, res) {
                 res.status(500).json({ error: err45 })
             })// error aayo ki aayena
         })
-        
-// router.get('/challenge/show', function (req, res) {
-//     // console.log("this is for showing data")
-//     // res.send("test show")
-//     Challenges.find().then(function (data) {
-//         // console.log(data);
-//         res.send(data);
-//     })
-// })
 
 // // for delete
 // router.delete('/challenge_delete/:id', auth.verifyUser, function (req, res) {
