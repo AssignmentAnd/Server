@@ -43,13 +43,13 @@ router.post('/p_challenge/post',function (req, res) {
 
 })
 
-// router.get('/p_challenge/show', function (req, res) {
-//     // console.log("this is for showing data")
-//     PostChallenge.find().then(function (data) {
-//         // console.log(data);
-//         res.json({ data: data, success: true });
-//     })
-// })
+router.get('/p_challenge/show', function (req, res) {
+    // console.log("this is for showing data")
+    PostChallenge.find().then(function (data) {
+        // console.log(data);
+        res.json({ data: data, success: true });
+    })
+})
 
 // router.get('/p_challenge/single/:id', function (req, res) {
 //     // console.log("this is for showing data")
