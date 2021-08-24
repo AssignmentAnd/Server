@@ -14,7 +14,7 @@ const PostChallenge = mongoose.model('PostChallenge',{
         required : true
     },
     Discordid: {
-        type : String,
+        type : Number,
         required : true
     },
     Description: {

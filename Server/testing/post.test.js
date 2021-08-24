@@ -22,7 +22,7 @@ describe('Register Test', () => {
  'Username':'biraj',
  'Challengetitle': 'this is a title',
  'Game': 'PUBG',
- 'Discordid':"1234",
+ 'Discordid':1234,
  'Description':'this is description',
  'Challengerate':'1000Rs',
  'Livelink':'http://youtube'
@@ -33,7 +33,7 @@ describe('Register Test', () => {
 expect(pro_ret.Username).toEqual('biraj');
 expect(pro_ret.Challengetitle).toEqual('this is a title');
 expect(pro_ret.Game).toEqual('PUBG');
-expect(pro_ret.Discordid).toEqual("1234");
+expect(pro_ret.Discordid).toEqual(1234);
 expect(pro_ret.Description).toEqual('this is description');
 expect(pro_ret.Challengerate).toEqual('1000Rs');
 expect(pro_ret.Livelink).toEqual('http://youtube');
